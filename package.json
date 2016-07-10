@@ -4,6 +4,7 @@
   "description": "A REST API for note-taking.",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/patriciachunk/MegaNote-server/issues"
   },
-  "homepage": "https://github.com/patriciachunk/MegaNote-server#readme"
+  "homepage": "https://github.com/patriciachunk/MegaNote-server#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "mongoose": "^4.5.0"
+  },
+  "devDependencies": {
+    "supervisor": "^0.11.0"
+  }
 }
