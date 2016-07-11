@@ -1,5 +1,6 @@
 var router = require('express').Router();
 var bcrypt = require('bcryptjs');
+var jwt = require('jsonwebtoken');
 var User = require('../models/user');
 
 // CREATE a user
@@ -19,7 +20,15 @@ router.post('/', function(req, res) {
   user
      .save()
      .then(
-       userData => res.json(userData)
+       u userData => {
+         var token = jwt.sign(userData._id, process.env.JWT_SECRET, {
+           expiresIn: 60*60*24
+         });
+         res.json({
+           user: userData,
+           authToken: token
+         });
+       }
      );
 });
 
