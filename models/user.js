@@ -10,6 +10,10 @@ var db = require('../config/db');
      required: true,
      unique: true
    },
+   passwordDigest: {
+     type: String,
+     required: true
+   },
    updated_at: {
      type: Date,
      default: Date.now
@@ -20,6 +24,13 @@ var db = require('../config/db');
    this.updated_at = Date.now();
    next();
  });
+
+ userSchema.methods.toJSON = function() {
+   var user = this.toObject();
+   delete user.passwordDigest;
+   delete user.__v;
+   return user;
+ };
 
  var User = db.model('User', userSchema);
 
